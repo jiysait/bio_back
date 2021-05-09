@@ -75,8 +75,15 @@ WSGI_APPLICATION = 'bio_back.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'learning',
+        'CLIENT': {
+            'host': 'mongo',
+            'port': 27017,
+            'username': 'countonme',
+            'password': 'qhduwnfRp5115db',
+            # 'authSource': 'amin'
+        }
     }
 }
 
