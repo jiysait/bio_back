@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'tRNA',
+
+    'single_file_upload',
 ]
 
 MIDDLEWARE = [
@@ -79,13 +80,13 @@ WSGI_APPLICATION = 'bio_back.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'learning',
+        'NAME': 'examples',
         'CLIENT': {
-            'host': 'mongo',
+            'host': 'ideapot.net',
             'port': 27017,
-            'username': 'countonme',
-            'password': 'qhduwnfRp5115db',
-            # 'authSource': 'amin'
+            'username': 'ebsdbmaster',
+            'password': 'ebsdbPASS',
+            # 'authSource': 'amin',
         }
     }
 }
@@ -129,6 +130,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
