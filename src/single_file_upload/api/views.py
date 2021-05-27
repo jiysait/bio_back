@@ -1,13 +1,13 @@
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
-
-from single_file_upload.models import SingleFileUpload
+from rest_framework.decorators import api_view, parser_classes
+from rest_framework.parsers import MultiPartParser
 
 from .serializers import SingleFileUploadSerializer
 
 
 @api_view(['POST', ])
+@parser_classes([MultiPartParser])
 def single_file_upload_view(request):
     if request.method == 'POST':
         serializer = SingleFileUploadSerializer(data=request.data)

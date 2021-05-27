@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('examples/', include('single_file_upload.api.urls', 'single_file_upload_api')),
+    path('examples/', include('multiple_files_upload.api.urls', 'multiple_files_upload_api')),
 ]

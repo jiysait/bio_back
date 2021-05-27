@@ -1,10 +1,10 @@
 from rest_framework import serializers
 
-from single_file_upload.models import SingleFileUpload
+from single_file_upload.models import MyFile
 
 
-class AccountSerializer(serializers.ModelSerializer):
+class SingleFileUploadSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = SingleFileUpload
-        fields = ('name', 'file')
+        model = MyFile
+        fields = ('file', )
