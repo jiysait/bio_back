@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     'single_file_upload',
     'multiple_files_upload',
+    'ebs',
 ]
 
 MIDDLEWARE = [
