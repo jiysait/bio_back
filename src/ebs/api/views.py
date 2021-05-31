@@ -1,10 +1,10 @@
-from rest_framework import serializers, status
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, parser_classes
 from rest_framework.parsers import MultiPartParser
 
 from ebs.api.serializers import AnalysisSerializer, SequenceSerializer
-from ebs.models import Sequence
+from ebs.models import Analysis, Sequence
 
 
 @api_view(['POST', ])
@@ -16,6 +16,18 @@ def open_analysis_view(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', ])
+def read_all_analyses_view(request):
+    try:
+        analyses = Analysis.objects.all()
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = AnalysisSerializer(analyses, many=True)
+        return Response(serializer.data)
 
 
 @api_view(['POST', ])
@@ -37,6 +49,7 @@ def add_sequence_view(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['GET', ])
 def read_all_sequences_view(request):
